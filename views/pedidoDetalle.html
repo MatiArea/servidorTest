@@ -1,0 +1,135 @@
+<head>
+    <meta charset="utf-8">
+</head>
+
+<style>
+    .invoice-box {
+        max-width: 800px;
+        margin: auto;
+        padding: 30px;
+        font-size: 16px;
+        line-height: 24px;
+        font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    }
+    
+    .invoice-box table {
+        width: 100%;
+        line-height: inherit;
+    }
+    
+    .invoice-box table td {
+        padding: 5px;
+        vertical-align: top;
+    }
+    
+    .invoice-box table tr.top table td {
+        padding-bottom: 20px;
+    }
+    
+    .invoice-box table tr.top table td.title {
+        font-size: 45px;
+        line-height: 45px;
+    }
+    
+    .invoice-box table tr.information table td {
+        padding-bottom: 40px;
+    }
+    
+    .invoice-box table tr.heading td {
+        font-weight: bold;
+        border-bottom: 2px solid black;
+    }
+    
+    td {
+        border-bottom: 2px solid black;
+    }
+    
+    table {
+        border-collapse: collapse;
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+    }
+    
+    .total {
+        float: right;
+        margin-right: 20px;
+        font-weight: bold;
+    }
+    
+    .radiocir {
+        border: 2px solid black;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        padding: 5px;
+    }
+</style>
+
+<div class="invoice-box">
+
+    <div class="radiocir">
+        <div style="font-size:15px">
+            <!--<img src="./logo.png" style="width:150px;height:100px;margin-left: 290px">-->
+            <br>
+            <u><b style="margin-left: 340">GESPED</b></u>
+            <br>
+            <u><b>Comprobante de pedido</b></u>
+            <br><br>
+        </div>
+        <u><b>Pedido Número</b></u>: {{numeroPedido}} <br> <u><b>Fecha</b></u>: {{fechaPedido}}<br>
+    </div>
+    <div class="radiocir">
+        <u><b>Cliente</b></u>: {{clienteRazonsocial}}<br> <u><b>Cuit</b></u>: {{clienteCuit}}<br> <u><b>Domicilio</b></u>: {{clienteDomicilio}}
+    </div>
+    <div>
+        <table cellpadding="0" cellspacing="0">
+
+
+
+
+            <tr class="heading">
+                <td>
+                    Codigo
+                </td>
+                <td style="text-align: center">
+                    Nombre
+                </td>
+                <td style="text-align: center">
+                    Precio unitario
+                </td>
+                <td style="text-align: center">
+                    Cantidad
+                </td>
+                <td style="text-align: center">
+                    Sub total
+                </td>
+            </tr>
+
+            {{#each itemsPedido}}
+            <tr class="item">
+                <td>
+                    {{code}}
+                </td>
+                <td style="text-align: center">
+                    {{name}}
+                </td>
+                <td style="text-align: center">
+                    ${{price}}
+                </td>
+                <td style="text-align: center">
+                    ${{units}}
+                </td>
+                <td style="text-align: center">
+                    ${{subtotal}}
+                </td>
+            </tr>
+            {{/each}}
+
+
+
+
+        </table>
+        <div class="total">
+            Total: $ {{totalPedido}}
+        </div>
+    </div>
+</div>

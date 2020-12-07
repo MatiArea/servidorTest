@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var emailRouter = require('./routes/email');
+var pdfRouter = require('./routes/pdf')
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/email', emailRouter);
+app.use('/pdf',pdfRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
