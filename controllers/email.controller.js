@@ -20,7 +20,7 @@ exports.notificarCambioEstado = function (req, res) {
     from: "gespedati@gmail.com",
     to: body.email,
     subject: "Cambio de estado",
-    text: `<h3>Estimado usuario:</h3>
+    html: `<h3>Estimado usuario:</h3>
 
     <div>
       <p>Su pedido Nº${body.numero} paso a estado ${body.estado} el dia ${date}.</p>
