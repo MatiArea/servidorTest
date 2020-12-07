@@ -18,7 +18,7 @@ exports.notificarCambioEstado = function (req, res) {
 
   const mailOptions = {
     from: "gespedati@gmail.com",
-    to: "matuarea@gmail.com, tincholeon10@gmail.com, ivanchiabrera@hotmail.com",
+    to: body.email,
     subject: "Cambio de estado",
     text: `El pedido N°${body.numero} paso a estado ${body.estado} el dia ${date}`,
   };
