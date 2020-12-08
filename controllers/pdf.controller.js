@@ -32,9 +32,8 @@ exports.createPDF = async function (req, res) {
       args: ["--no-sandbox","--disable-setuid-sandbox"],
     });
     const page = await browser.newPage();
-    await page.goto(data:text/html,${finalHtml}, {
-        waitUntil: 'networkidle0'
-    });
+    await page.setContent(finalHtml);
+    await page.emulateMedia("screen");
     await page.pdf(options);
     await browser.close();
     console.log("PDF creado con exito!");
