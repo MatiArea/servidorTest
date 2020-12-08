@@ -33,7 +33,7 @@ exports.createPDF = async function (req, res) {
   await page.pdf(options);
   await browser.close();
   console.log("PDF creado con exito!");
-  let file = path.join(__dirname, `Detalle pedido N° ${dataBinding.numeroPedido}.pdf`);
+  let file = path.join(`./pdf/Detalle pedido N° ${dataBinding.numeroPedido}.pdf`);
   console.log(file);
   res.download(file, (err) => {
     if (err) {
