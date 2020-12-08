@@ -6,7 +6,6 @@ const handlebars = require("handlebars");
 exports.createPDF = async function (req, res) {
   try {
     var dataBinding = req.body.data
-    console.log(dataBinding)
   
     var templateHtml = fs.readFileSync(
       path.join(process.cwd(), './views/pedidoDetalle.html'),
@@ -35,7 +34,6 @@ exports.createPDF = async function (req, res) {
     await browser.close();
     console.log("PDF creado con exito!");
     let file = path.join(`./pdf/Detalle pedido N° ${dataBinding.numeroPedido}.pdf`);
-    console.log(file);
     res.download(file, (err) => {
       if (err) {
         console.error(err);
