@@ -7,7 +7,7 @@ exports.createPDF = async function (req, res) {
   var dataBinding = req.body.data
 
   var templateHtml = fs.readFileSync(
-    path.join(process.cwd(), '../views/pedidoDetalle.html'),
+    path.join(process.cwd(), './views/pedidoDetalle.html'),
     "utf8"
   );
   var template = handlebars.compile(templateHtml);
@@ -22,7 +22,7 @@ exports.createPDF = async function (req, res) {
       bottom: "100px",
     },
     printBackground: true,
-    path: `../pdf/Detalle pedido N° ${pedido.numero}.pdf`,
+    path: `./pdf/Detalle pedido N° ${pedido.numero}.pdf`,
   };
 
   const browser = await puppeteer.launch();
