@@ -27,7 +27,7 @@ exports.createPDF = async function (req, res) {
       path: `./pdf/Detalle pedido N° ${dataBinding.numeroPedido}.pdf`,
     };
   
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({ args: ['--no-sandbox','--disable-setuid-sandbox'] });
     const page = await browser.newPage();
     await page.setContent(finalHtml);
     await page.emulateMedia("screen");
