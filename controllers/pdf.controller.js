@@ -1,14 +1,14 @@
 const fs = require("fs");
 const path = require("path");
-const puppeteer = require('puppeteer');
+const puppeteer = require("puppeteer");
 const handlebars = require("handlebars");
 
 exports.createPDF = async function (req, res) {
   try {
-    var dataBinding = req.body.data
-  
+    var dataBinding = req.body.data;
+
     var templateHtml = fs.readFileSync(
-      path.join(process.cwd(), './views/pedidoDetalle.html'),
+      path.join(process.cwd(), "./views/pedidoDetalle.html"),
       "utf8"
     );
     var template = handlebars.compile(templateHtml);
@@ -25,24 +25,29 @@ exports.createPDF = async function (req, res) {
       printBackground: true,
       path: `./pdf/Detalle pedido N° ${dataBinding.numeroPedido}.pdf`,
     };
-  
-    const browser = await puppeteer.launch({ args: ['--no-sandbox','--disable-setuid-sandbox'] });
+
+    const browser = await puppeteer.launch({
+      args: ["--no-sandbox"],
+      headless: true,
+    });
     const page = await browser.newPage();
     await page.setContent(finalHtml);
     await page.emulateMedia("screen");
     await page.pdf(options);
     await browser.close();
     console.log("PDF creado con exito!");
-    let file = path.join(`./pdf/Detalle pedido N° ${dataBinding.numeroPedido}.pdf`);
+    let file = path.join(
+      `./pdf/Detalle pedido N° ${dataBinding.numeroPedido}.pdf`
+    );
     res.download(file, (err) => {
       if (err) {
         console.error(err);
         return;
       }
-  
+
       fs.unlinkSync(file);
     });
   } catch (error) {
-      console.log(error)
+    console.log(error);
   }
 };
