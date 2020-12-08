@@ -5,6 +5,7 @@ const handlebars = require("handlebars");
 
 exports.createPDF = async function (req, res) {
   try {
+    
     var dataBinding = req.body.data;
 
     var templateHtml = fs.readFileSync(
@@ -31,8 +32,9 @@ exports.createPDF = async function (req, res) {
       args: ["--no-sandbox","--disable-setuid-sandbox"],
     });
     const page = await browser.newPage();
-    await page.setContent(finalHtml);
-    await page.emulateMedia("screen");
+    await page.goto(data:text/html,${finalHtml}, {
+        waitUntil: 'networkidle0'
+    });
     await page.pdf(options);
     await browser.close();
     console.log("PDF creado con exito!");
