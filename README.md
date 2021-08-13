@@ -1,2 +1,2 @@
-# servidorMails
-Repositorio destinado a la creación de un servidor que envía mails
+# Server Test 
+Este servidor incluye varias funcionalidades para testear, como por ejemplo, envio de mails y creacion de pdf.
