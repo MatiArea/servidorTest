@@ -86,7 +86,7 @@ exports.createRecibo = async function (req, res) {
     await browser.close();
     console.log("PDF creado con exito!");
     let file = path.join(`./pdf/recibo.pdf`);
-    res.send(file, (err) => {
+    res.download(file, (err) => {
       if (err) {
         console.error(err);
         return;
