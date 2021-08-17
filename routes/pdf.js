@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.post('/create', createPDF);
-router.post('/recibo', createRecibo);
+router.get('/recibo', createRecibo);
 
 
 module.exports = router;
