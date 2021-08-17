@@ -92,7 +92,7 @@ exports.createRecibo = async function (req, res) {
         return;
       }
 
-      fs.unlinkSync(file);
+    //  fs.unlinkSync(file);
     });
   } catch (error) {
     console.log(error);
